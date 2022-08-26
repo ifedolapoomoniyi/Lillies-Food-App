@@ -1,0 +1,29 @@
+.LandingPage{
+    height: 100vh;
+    display: flex;
+    flex-direction: row-reverse;
+    color: white;
+    justify-content: space-between;
+    padding-top: 15vh;
+
+}
+.landing-text{
+    max-width: 600px;
+}
+
+.landing-text h1{
+    font-size: 64px;
+}
+
+
+.landing-image img{
+    height: 55vh;
+}
+.landing-image{
+    padding-right: 3rem;
+}
+
+.landing-description{
+    font-size: 18px;
+
+}
