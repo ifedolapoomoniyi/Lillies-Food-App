@@ -1,0 +1,19 @@
+.Special{
+    color: white;
+    padding: 70px 0;
+}
+.special-components{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+}
+.special-text{
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+    padding: 40px;
+}
+.special-text h2{
+    font-size: 35px;
+}

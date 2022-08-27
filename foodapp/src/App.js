@@ -5,7 +5,6 @@ function App() {
   return (
     <div className='App'>
       <Homepage/>
-      This is sample text to make sure the whole app still works
     </div>
   );
 }

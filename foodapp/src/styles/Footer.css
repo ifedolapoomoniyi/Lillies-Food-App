@@ -1,0 +1,22 @@
+.Footer{
+    background: #0B0D17;
+    color: white;
+}
+.footer-flexer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+.OnPlay{
+    height: 100px;
+    box-sizing: border-box;
+}
+.Appstore{
+    height: 30px;
+}
+.row4{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

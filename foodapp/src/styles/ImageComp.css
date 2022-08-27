@@ -1,0 +1,11 @@
+.ImageComp img{
+    height: 250px;
+}
+.ImageComp{
+    text-align: center;
+
+}
+.ImageComp div{
+    font-size: 20px;
+    padding: 4px;
+}
