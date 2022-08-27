@@ -1,6 +1,7 @@
 .Footer{
     background: #0B0D17;
     color: white;
+    padding: 3rem;
 }
 .footer-flexer{
     display: flex;
