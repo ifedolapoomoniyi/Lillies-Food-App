@@ -17,3 +17,6 @@
 .special-text h2{
     font-size: 35px;
 }
+.special-text p{
+    color: var(--tertiary-color);
+}

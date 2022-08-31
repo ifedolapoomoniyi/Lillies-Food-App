@@ -36,6 +36,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
+      <hr />
       <div className="footer-footer">
         <div>@2021 LILIES, All rights reserved</div>
         <div className="footer-socials">

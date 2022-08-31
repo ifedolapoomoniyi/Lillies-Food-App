@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    padding: 50px 0px;
 
 }
 .OnPlay{
@@ -20,4 +21,31 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+.footer-header{
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+    position: relative;
+    bottom: 10px;
+}
+.row1 div, .row2 div, .row3 div, .row4 div{
+    padding: 3px;
+    cursor: pointer;
+}
+.row1 div:hover, .row2 div:hover, .row3 div:hover, .row4 div:hover{
+    opacity: 0.5;
+}
+hr{
+    opacity: 0.3;
+    height: 1px;
+    box-sizing: border-box;
+}
+.footer-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.footer-socials span{
+    padding: 0px 10px;
 }

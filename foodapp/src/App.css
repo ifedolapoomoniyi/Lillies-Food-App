@@ -1,4 +1,8 @@
 :root{
     --primary-color: rgb(38, 59, 54);
     --secondary-color: rgba(251, 221, 187, 1);
+    --tertiary-color: rgba(255, 255, 255, 0.83);
+}
+input{
+    border-radius: 2px;
 }
