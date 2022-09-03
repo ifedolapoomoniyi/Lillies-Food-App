@@ -1,0 +1,43 @@
+.Sidebar{
+    width: 250px;
+    text-align: center;
+    padding: 7rem 1rem 0 1rem;
+    background: #FBFBFB;
+    height: 100vh;
+
+}
+.sidebar-logo{
+    padding: 4rem 0rem;
+    font-size: large;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.sidebar-logo img{
+    height: 3rem;
+}
+.sidebar-links{
+    text-decoration: none;
+    color: grey;
+    padding: 0.3rem 0.3rem;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+.sidebar-links:hover{
+    color: black;
+    background: #e9eada;
+    border-radius: 5px;
+}
+.sidebar-flexer{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+
+}

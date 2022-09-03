@@ -1,0 +1,6 @@
+.ActualDash{
+    display: flex;
+}
+.ActualDash:nth-child(2){
+    flex-grow: 3;
+}

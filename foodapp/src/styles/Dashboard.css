@@ -1,0 +1,19 @@
+.Dashboard{
+    width: 100%;
+    padding: 3rem;
+}
+
+.dashboard-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.dashboard-body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+}

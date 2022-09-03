@@ -25,5 +25,6 @@
 
 .landing-description{
     font-size: 18px;
+    color: var(--tertiary-color);
 
 }

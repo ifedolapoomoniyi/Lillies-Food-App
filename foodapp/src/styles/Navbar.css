@@ -4,6 +4,7 @@
     background: rgb(38, 59, 54);
     /* padding: 12px 30px; */
     color: white;
+    align-items: center;
 }
 .Navbar-links{
     display: flex;
@@ -11,14 +12,32 @@
 }
 .links{
     padding: 0px 20px;
+    color: white;
+    text-decoration: none;
 }
 .links:hover{
     color: #E2B887;
 }
 
 .signup-link{
-    background-color: #E2B887;
-    height: 140%;
+    background-color: var(--secondary-color);
     color: rgb(38, 59, 54);
-    border-radius: 4px
+    border-radius: 4px;
+    height: 25px;
+    display: flex;
+
+}
+.signup-link:hover{
+    opacity: 0.5;
+    color: var(--primary-color);
+}
+.company-logo{
+    height: 40px;
+}
+.company-name{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
 }
