@@ -40,7 +40,7 @@ const Login = () => {
              </Link>
           </div>
           <div className="forgot">
-            <Link to={""} className="forgot">
+            <Link to={'/dashboard'} className="forgot">
             Forgot Password
             </Link>
           </div>
