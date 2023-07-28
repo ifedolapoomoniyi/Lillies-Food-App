@@ -17,10 +17,6 @@ const Signup = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Name:", name);
-
 		localStorage.setItem("email", email);
 		localStorage.setItem("password", password);
 		localStorage.setItem("name", name);

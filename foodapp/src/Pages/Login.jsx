@@ -25,6 +25,7 @@ const Login = () => {
 		) {
 			alert("Login successful");
 			dashboard();
+
 		} else {
 			alert("Incorrect email or password");
 			// window.location.reload();
@@ -66,7 +67,8 @@ const Login = () => {
 							onChange={handlePasswordChange}
 							required
 						/>
-						<button className="show-password" onClick={handleClick}>
+						<button type="button" className="show-password" onClick={handleClick}
+            >
 							{showPassword ? "hide" : "show"}
 						</button>
 					</div>
@@ -74,7 +76,7 @@ const Login = () => {
 						type="submit"
 						className="login-btn"
 						onClick={handleSubmit}
-            autoFocus
+            onSubmit={dashboard}
 					>
 						LOGIN
 					</button>
