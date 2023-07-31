@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import img5 from "../imgs/img5.png";
 
 const Login = () => {
@@ -17,17 +19,20 @@ const Login = () => {
 	const dashboard = () => {
 		navigate("/dashboard");
 	};
+	const toastifySuccess = () => {
+		toast("Login Successful");
+	}
 
 	const handleSubmit = (e) => {
+		e.preventDefault();
 		if (
-			email == localStorage.getItem("email") &&
-			password == localStorage.getItem("password")
+			email === localStorage.getItem("email") &&
+			password === localStorage.getItem("password")
 		) {
-			alert("Login successful");
+			toastifySuccess();
 			dashboard();
-
 		} else {
-			alert("Incorrect email or password");
+			toast.error("Invalid Credentials");
 			// window.location.reload();
 		}
 	};
@@ -42,7 +47,8 @@ const Login = () => {
 
 	return (
 		<div className="Login-page">
-		  <div className="login-image">
+			<ToastContainer />
+		 	<div className="login-image">
 				<img src={img5} alt="Delicious food" />
 			</div>
 

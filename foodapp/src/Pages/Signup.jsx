@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import img6 from "../imgs/img6.png";
 import "../styles/Signup.css";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
 	const [showPassword, setshowPassword] = useState(false);
@@ -22,7 +24,7 @@ const Signup = () => {
 		localStorage.setItem("name", name);
 
 		setSubmitStatus(true);
-		alert("Signup successful")
+		// alert("Signup successful")
 		
 	};
 
@@ -46,8 +48,9 @@ const Signup = () => {
 		navigate("/login");
 	};
 
-	if(submitStatus == true){
-		redirect()
+	if(submitStatus === true){
+		toast.success("Signup successful")
+		redirect();
 	}
 
 
