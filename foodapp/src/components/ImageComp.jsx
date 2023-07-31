@@ -1,9 +1,14 @@
 import React from "react";
 import "../styles/ImageComp.css";
 import { useState } from "react";
-
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 export const cartStore = []
+
+const storeToLocalStorage = () => {
+localStorage.setItem("cart", JSON.stringify(cartStore))
+}
 
 const ImageComp = (props) => {
 	const body = props.body;
@@ -21,6 +26,8 @@ const ImageComp = (props) => {
 	const handleCartStore = ()=>{
 		cartStore.push(obj)
 		console.log(cartStore)
+		storeToLocalStorage()
+		toast.success("Added to Cart")
 	}
 
 	const handleOpen = () => {
@@ -44,6 +51,7 @@ const ImageComp = (props) => {
 
 	return (
 		<div className="ImageComp">
+			<ToastContainer/>
 			<img src={props.image} alt="" />
 			<h3 style={{ color: head }}>{props.name}</h3>
 			<p style={{ color: body }}>{props.text}</p>
