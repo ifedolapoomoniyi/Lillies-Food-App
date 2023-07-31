@@ -10,10 +10,21 @@
     padding: 2rem;
 }
 
+.dashboard-header img{
+    height: 50px;
+    border-radius: 50%;
+}
+
+.dashboard-header-welcome{
+    display: flex;
+    flex-direction: column;
+}
+
 .dashboard-body{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 2rem;
+    justify-content: space-evenly;
 
 }
