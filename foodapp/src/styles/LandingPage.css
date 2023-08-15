@@ -12,7 +12,7 @@
 }
 
 .landing-text h1{
-    font-size: 64px;
+    font-size: 4rem;
 }
 
 
@@ -27,4 +27,27 @@
     font-size: 18px;
     color: var(--tertiary-color);
 
+}
+
+@media screen and (max-width: 768px){
+    .LandingPage {
+        padding-top: 5vh;
+    }
+
+    .LandingPage h1 {
+        font-size: 3rem;
+    }
+    
+    .landing-image {
+        padding-right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: auto;
+    }
+
+    .landing-image img {
+        height: 40vh;
+    }
 }
