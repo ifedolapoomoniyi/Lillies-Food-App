@@ -52,7 +52,7 @@ const Login = () => {
 				<img src={img5} alt="Delicious food" />
 			</div>
 
-			<form>
+			<form className="login-container">
 				<div className="login">
 					<h2>Welcome Back!</h2>
 					<input
