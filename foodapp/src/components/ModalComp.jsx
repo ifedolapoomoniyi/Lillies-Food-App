@@ -29,9 +29,7 @@ const ModalComp = (props) => {
   return (
     <div>
         <Modal isOpen= {props.open} style={customStyles}>
-            <h2>Modal Test</h2>
-            <div>Modal Text</div>
-            <button onClick={props.handleClose}>Close Button</button>
+            <button onClick={props.handleClose}>Close</button>
         </Modal>
     </div>
   )
