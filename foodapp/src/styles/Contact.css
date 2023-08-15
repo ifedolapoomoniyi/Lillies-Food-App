@@ -5,6 +5,7 @@
     color: white;
     justify-content: space-evenly;
     padding: 70px 0px;
+    flex-wrap: wrap;
 }
 .contact-text{
     max-width: 500px;

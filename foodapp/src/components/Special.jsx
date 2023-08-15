@@ -4,7 +4,6 @@ import ImageComp from './ImageComp'
 import img2 from '../imgs/img2.png'
 import img3 from '../imgs/img3.png'
 import img4 from '../imgs/img4.png'
-import img5 from '../imgs/img5.png'
 
 const Special = () => {
   return (

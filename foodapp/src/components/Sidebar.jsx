@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Sidebar.css";
 import { Link } from "react-router-dom";
 import { UilHome } from "@iconscout/react-unicons";
@@ -9,17 +9,33 @@ import logo from "../imgs/logo.png";
 const Sidebar = (props) => {
 	const [showCart, setShowCart] = useState(false);
     const localCart = JSON.parse(localStorage.getItem("cart"))
-    // const clearCart = ()=>{
-    //     localStorage.removeItem("cart")
-    // }
+	const [ isNavOpen, setIsNavOpen] = useState(false)
 
+	const handleNavOpen =() => {
+		setIsNavOpen(!isNavOpen)
+	  }
+	
+	  useEffect(() => {
+		
+		const hamburger = document.querySelector('.hamburger');
+	
+		  hamburger.addEventListener('click', handleNavOpen)
+	
+		  return () => {
+			hamburger.removeEventListener('click', handleNavOpen);
+		  };
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, [isNavOpen]
+	  )
+	
 	const handleShowCart = () => {
 		setShowCart(!showCart);
 	};
-    const cartNo = localCart.length
+    const cartNo = localCart?.length
 
     return (
-		<div className="Sidebar">
+		<>
+		<div className={isNavOpen? "Sidebar active" : "Sidebar"}>
 			<div className="sidebar-logo">
 				<img src={logo} alt="" />
 				<span>Lilies</span>
@@ -62,7 +78,9 @@ const Sidebar = (props) => {
 					</Link>
 				</div>
 			</div>
-			{showCart ? (
+		</div>
+
+		{showCart ? (
 				<div className="cart-container">
 					<div className="cart-blur" onClick={handleShowCart}></div>
 					<div className="cart-main-container">
@@ -99,8 +117,16 @@ const Sidebar = (props) => {
 					</div>
 				</div>
 			) : null}
-		</div>
-	);
+
+<div className={isNavOpen? "hamburger active": "hamburger"}>
+          <span className="bar side"></span>
+          <span className="bar side"></span>
+          <span className="bar side"></span>
+    </div>
+
+
+		</>
+);
 };
 
 export default Sidebar;

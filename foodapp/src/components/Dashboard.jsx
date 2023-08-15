@@ -17,9 +17,9 @@ const Dashboard = () => {
 				<img src={Avatar} alt="Profile" />
 			</div>
 			<div className="dashboard-body">
-					{Food.map((item, key) => {
+					{Food.map((item) => {
 						return (
-				<div className="dashboard-image">
+				<div className="dashboard-image" key={item.name}>
 							<ImageComp
 								name={item.name}
 								text={item.description}

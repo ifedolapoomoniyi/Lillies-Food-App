@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img6 from "../imgs/img6.png";
 import "../styles/Signup.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ const Signup = () => {
 	const [password, setPassWord] = useState("");
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
-	const [submitStatus, setSubmitStatus] = useState(false)
+	const [submitStatus, setSubmitStatus] = useState(false);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -25,9 +25,7 @@ const Signup = () => {
 
 		setSubmitStatus(true);
 		// alert("Signup successful")
-		
 	};
-
 	const handleEmailChange = (e) => {
 		setEmail(e.target.value);
 	};
@@ -39,20 +37,19 @@ const Signup = () => {
 	const handleNameChange = (e) => {
 		setName(e.target.value);
 	};
-
-
-
-	
 	const navigate = useNavigate();
 	const redirect = () => {
 		navigate("/login");
 	};
 
-	if(submitStatus === true){
-		toast.success("Signup successful")
-		redirect();
-	}
-
+	useEffect(() => {
+		if (submitStatus === true) {
+			toast.success("Signup successful");
+			setTimeout(() => {
+				redirect();
+			}, 1800);
+		}
+	}, [submitStatus]);
 
 	return (
 		<div className="Signup">
@@ -60,8 +57,9 @@ const Signup = () => {
 				<img src={img6} alt="" />
 			</div>
 
-			<form>
+			<form className="signup-page-container">
 				<div className="signup-page">
+					<ToastContainer />
 					<h3>Welcome to Lilies!</h3>
 					<input
 						type="text"
@@ -98,11 +96,11 @@ const Signup = () => {
 							{showPassword ? "hide" : "show"}
 						</button>
 					</div>
-					
+
 					<button
 						type="submit"
 						className="signup-btn login-btn"
-						onClick= {handleSubmit}
+						onClick={handleSubmit}
 						onSubmit={redirect}
 					>
 						SIGN UP
