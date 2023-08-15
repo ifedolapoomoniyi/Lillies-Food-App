@@ -20,6 +20,7 @@ const Navbar = () => {
       return () => {
         hamburger.removeEventListener('click', handleNavOpen);
       };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isNavOpen]
   )
 
