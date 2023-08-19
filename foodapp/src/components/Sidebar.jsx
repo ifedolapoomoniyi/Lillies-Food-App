@@ -10,15 +10,29 @@ import {
 	Logout,
 } from "@mui/icons-material";
 import logo from "../imgs/logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../redux/cartSlice";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+
 
 const Sidebar = (props) => {
+	const dispatch = useDispatch();
 	const [showCart, setShowCart] = useState(false);
-	const localCart = JSON.parse(localStorage.getItem("cart"));
 	const [isNavOpen, setIsNavOpen] = useState(false);
-
+	const [showCheckout, setShowCheckout] = useState(false);
 	const handleNavOpen = () => {
 		setIsNavOpen(!isNavOpen);
 	};
+	const handleShowCart = () => {
+		setShowCart(!showCart);
+	};
+	const cartItems = useSelector((state) => state.theme.items);
+	
+	function handleClearCart() {
+		dispatch(clearCart());
+		toast.success("Cart cleared")
+	}
 
 	useEffect(() => {
 		const hamburger = document.querySelector(".hamburger");
@@ -31,13 +45,9 @@ const Sidebar = (props) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isNavOpen]);
 
-	const handleShowCart = () => {
-		setShowCart(!showCart);
-	};
-	const cartNo = localCart?.length;
-
 	return (
 		<>
+			<ToastContainer/>
 			<div className={isNavOpen ? "Sidebar active" : "Sidebar"}>
 				<div className="sidebar-logo">
 					<img src={logo} alt="" />
@@ -101,7 +111,7 @@ const Sidebar = (props) => {
 								gap: "8px",
 							}}
 						>
-							<Badge badgeContent={cartNo} color="secondary">
+							<Badge badgeContent={cartItems?.length} color="secondary">
 								<ShoppingCart />
 							</Badge>
 							Your Cart
@@ -136,7 +146,7 @@ const Sidebar = (props) => {
 							<div>Sub-total</div>
 						</div>
 
-						{localCart?.map((item) => {
+						{cartItems?.map((item) => {
 							return (
 								<div className="cartStore-item">
 									<div className="cartStore-item-name">
@@ -152,17 +162,39 @@ const Sidebar = (props) => {
 							Total:{" "}
 							<b>
 								NGN{" "}
-								{localCart?.reduce(
+								{cartItems?.reduce(
 									(acc, item) => acc + item.total,
 									0
 								)}
 							</b>
 						</div>
 						<button className="checkout-btn">Checkout</button>
-						{/* <button type="button" className="clear-btn" onClick={clearCart}>Clear Cart</button> */}
+						<button type="button" className="clear-btn" onClick={handleClearCart}>Clear Cart</button>
 					</div>
 				</div>
 			) : null}
+
+
+			{/* Show checkout */}
+
+			{showCheckout? 
+			<div className="checkout-container">
+				<div className="blur"></div>
+
+				<div className="checkout-modal">
+					<div className="checkout-modal-header">
+						<div className="checkout-modal-header-first">
+							Item
+						</div>
+						<div>Qty</div>
+						<div>Price</div>
+						<div>Status</div>
+					</div>
+				</div>
+
+			</div>
+			: null}
+
 
 			<div className={isNavOpen ? "hamburger active" : "hamburger"}>
 				<span className="bar side"></span>
