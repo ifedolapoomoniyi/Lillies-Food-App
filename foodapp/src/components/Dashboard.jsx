@@ -4,6 +4,8 @@ import ImageComp from "./ImageComp";
 import { Food } from "../data/data";
 import Avatar from "../imgs/Avatar.jpg"
 
+
+
 const Dashboard = () => {
 
 	return (

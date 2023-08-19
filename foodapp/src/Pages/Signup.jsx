@@ -49,6 +49,7 @@ const Signup = () => {
 				redirect();
 			}, 1800);
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [submitStatus]);
 
 	return (

@@ -3,6 +3,8 @@ import "../styles/ImageComp.css";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/actions/index";
 
 export const cartStore = []
 
@@ -20,7 +22,12 @@ const ImageComp = (props) => {
 		price: props.price,
 		amount: number,
 		total: props.price * number,
+	}
 
+	const dispatch = useDispatch();
+
+	function handleAddToCart() {
+		dispatch(addItem(obj));
 	}
 
 	const handleCartStore = ()=>{
@@ -28,6 +35,7 @@ const ImageComp = (props) => {
 		console.log(cartStore)
 		storeToLocalStorage()
 		toast.success("Added to Cart")
+		handleAddToCart()
 	}
 
 	const handleOpen = () => {

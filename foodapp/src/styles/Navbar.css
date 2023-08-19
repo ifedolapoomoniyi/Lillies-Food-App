@@ -1,13 +1,12 @@
 .Navbar{
     display: flex;
     justify-content: right;
-    background: rgb(38, 59, 54);
     /* padding: 12px 30px; */
     color: white;
     align-items: center;
     position: relative;
     top: -2rem;
-    z-index: 0;
+    z-index: 2;
 }
 .Navbar-links{
     display: flex;
@@ -44,7 +43,7 @@
     font-size: 20px;
     font-weight: 700;
     color: white;
-    z-index: 100000;
+    z-index: 10;
 }
 
 .hamburger {
@@ -62,6 +61,8 @@
         position: fixed;
         left: -100%;
         transition: 0.3s all ease;
+        background: rgb(38, 59, 54);
+
     }
 
     .Navbar.active {
@@ -84,7 +85,8 @@
         color: white;
         position: fixed;
         right: 1rem;
-        top: 1rem;
+        top: 5vh;
+        z-index: 10;
     }
 
     .bar {

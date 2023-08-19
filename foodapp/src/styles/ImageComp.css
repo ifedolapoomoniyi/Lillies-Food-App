@@ -67,6 +67,7 @@
     align-items: center;
     border-left: 1px solid gray;
     height: calc(100% + 5px);
+    z-index: 200;
 }
 
 .modal-prop p{
@@ -106,4 +107,39 @@
     font-size: 24px;
     padding: 0.5rem;
     border: none;
+}
+
+/* Media queries for responsiveness */
+
+@media screen and (max-width: 768px) {
+    .blur {
+        width: 20%;
+    }
+
+    .modal-prop {
+        width: 80%;
+    }
+
+    .close-btn button {
+        left: 10px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .blur {
+        width: 10%;
+    }
+
+    .modal-prop {
+        width: 90%;
+    }
+
+    .ImageComp img {
+        height: 150px;
+    }
+
+    .ImageComp div{
+        font-size: 16px;
+    }
 }
