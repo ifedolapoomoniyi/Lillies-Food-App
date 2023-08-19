@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { useDispatch } from "react-redux";
-import { addItem } from "../redux/actions/index";
+import { addItem } from "../redux/cartSlice"
 
 export const cartStore = []
 
@@ -32,7 +32,6 @@ const ImageComp = (props) => {
 
 	const handleCartStore = ()=>{
 		cartStore.push(obj)
-		console.log(cartStore)
 		storeToLocalStorage()
 		toast.success("Added to Cart")
 		handleAddToCart()
@@ -44,11 +43,9 @@ const ImageComp = (props) => {
 	const handleClose = () => {
 		setopenModal(false);
 	};
-
 	const handleAdd = () => {
 		setnumber(number + 1);
 	};
-
 	const handleSubstract = () => {
 		if (number <= 0) {
 			setnumber(0);
