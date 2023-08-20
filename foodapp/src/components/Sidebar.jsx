@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../redux/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
-
+import { checkout } from "../redux/checkoutSlice";
 
 const Sidebar = (props) => {
 	const dispatch = useDispatch();
@@ -27,11 +27,29 @@ const Sidebar = (props) => {
 	const handleShowCart = () => {
 		setShowCart(!showCart);
 	};
+	const handleshowCheckout = () => {
+		setShowCheckout(!showCheckout);
+	};
 	const cartItems = useSelector((state) => state.theme.items);
+	const checkoutItems = useSelector((state) => state.checkout.cart);
 	
 	function handleClearCart() {
 		dispatch(clearCart());
+		if (cartItems.length === 0) {
+			toast.warning("Cart is already empty")
+			return
+		}
 		toast.success("Cart cleared")
+	}
+
+	function handleCheckout() {
+		if (cartItems.length === 0) {
+			toast.warning("Cart is empty")
+			return
+		}
+		dispatch(checkout(cartItems));
+		dispatch(clearCart());
+		toast.success("Checkout successful")
 	}
 
 	useEffect(() => {
@@ -84,7 +102,7 @@ const Sidebar = (props) => {
 							Your Profile
 						</Link>
 					</div>
-					<div className="orders-link">
+					<div className="orders-link" onClick={handleshowCheckout}>
 						<Link
 							className="sidebar-links"
 							to={""}
@@ -96,7 +114,9 @@ const Sidebar = (props) => {
 							}}
 						>
 							{" "}
-							<LocalShipping />
+							<Badge badgeContent={checkoutItems.length} color="secondary">
+								<LocalShipping />
+							</Badge>
 							Orders
 						</Link>
 					</div>
@@ -168,18 +188,18 @@ const Sidebar = (props) => {
 								)}
 							</b>
 						</div>
-						<button className="checkout-btn">Checkout</button>
+						<button className="checkout-btn" onClick={handleCheckout}>Checkout</button>
 						<button type="button" className="clear-btn" onClick={handleClearCart}>Clear Cart</button>
 					</div>
 				</div>
 			) : null}
 
 
-			{/* Show checkout */}
+			{/* Show checkout modal*/}
 
 			{showCheckout? 
 			<div className="checkout-container">
-				<div className="blur"></div>
+				<div className="checkout-blur" onClick={handleshowCheckout}></div>
 
 				<div className="checkout-modal">
 					<div className="checkout-modal-header">
@@ -190,6 +210,27 @@ const Sidebar = (props) => {
 						<div>Price</div>
 						<div>Status</div>
 					</div>
+
+					{checkoutItems?.map((item) => {
+						return (
+						<div>
+							<h3>Batch</h3>
+							{item.map((item) => {
+								return (
+									<div className="checkout-item">
+									<div className="checkout-item-name">
+										{item.name}
+									</div>
+									<div>{item.amount}</div>
+									<h4>{item.price}</h4>
+									<h4 className="checkout-status">Cooking</h4>
+								</div>
+								)
+							})}
+
+						</div>						);
+					})}
+
 				</div>
 
 			</div>

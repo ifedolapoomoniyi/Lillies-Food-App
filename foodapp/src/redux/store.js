@@ -1,10 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import cartReducer from './cartSlice';
+import checkoutReducer from './checkoutSlice';
+
+const rootReducer = combineReducers({
+    theme: cartReducer,
+    checkout: checkoutReducer,
+})
 
 const store = configureStore({
-    reducer: {
-        theme: cartReducer,
-    },
+    reducer: rootReducer
 });
 
 export default store;
