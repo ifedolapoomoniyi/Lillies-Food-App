@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Sidebar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UilHome } from "@iconscout/react-unicons";
 import { Badge } from "@mui/material";
 import {
@@ -13,7 +13,7 @@ import logo from "../imgs/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../redux/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
+import "react-toastify/dist/ReactToastify.css";
 import { checkout } from "../redux/checkoutSlice";
 
 const Sidebar = (props) => {
@@ -32,24 +32,25 @@ const Sidebar = (props) => {
 	};
 	const cartItems = useSelector((state) => state.theme.items);
 	const checkoutItems = useSelector((state) => state.checkout.cart);
-	
+	const redirect = useNavigate();
+
 	function handleClearCart() {
 		dispatch(clearCart());
 		if (cartItems.length === 0) {
-			toast.warning("Cart is already empty")
-			return
+			toast.warning("Cart is already empty", { autoClose: 2000 });
+			return;
 		}
-		toast.success("Cart cleared")
+		toast.success("Cart cleared");
 	}
 
 	function handleCheckout() {
 		if (cartItems.length === 0) {
-			toast.warning("Cart is empty")
-			return
+			toast.warning("Cart is empty");
+			return;
 		}
 		dispatch(checkout(cartItems));
 		dispatch(clearCart());
-		toast.success("Checkout successful")
+		toast.success("Checkout successful");
 	}
 
 	useEffect(() => {
@@ -65,17 +66,24 @@ const Sidebar = (props) => {
 
 	return (
 		<>
-			<ToastContainer/>
+			<ToastContainer autoClose={3000} />
 			<div className={isNavOpen ? "Sidebar active" : "Sidebar"}>
 				<div className="sidebar-logo">
-					<img src={logo} alt="" />
+					<img
+						src={logo}
+						alt=""
+						onClick={() => {
+							redirect("/");
+						}}
+						style={{ cursor: "pointer" }}
+					/>
 					<span>Lilies</span>
 				</div>
 				<div className="sidebar-flexer">
-					<div className="dashboard-link">
+					<div className="dashboard-link" onClick={handleNavOpen}>
 						<Link
 							className="sidebar-links"
-							to={""}
+							to={"/dashboard"}
 							style={{
 								display: "flex",
 								alignItems: "center",
@@ -87,10 +95,10 @@ const Sidebar = (props) => {
 							Dashboard
 						</Link>
 					</div>
-					<div className="profile-link">
+					<div className="profile-link" onClick={handleNavOpen}>
 						<Link
 							className="sidebar-links"
-							to={""}
+							to={"/profile"}
 							style={{
 								display: "flex",
 								alignItems: "center",
@@ -114,7 +122,10 @@ const Sidebar = (props) => {
 							}}
 						>
 							{" "}
-							<Badge badgeContent={checkoutItems.length} color="secondary">
+							<Badge
+								badgeContent={checkoutItems.length}
+								color="secondary"
+							>
 								<LocalShipping />
 							</Badge>
 							Orders
@@ -131,7 +142,10 @@ const Sidebar = (props) => {
 								gap: "8px",
 							}}
 						>
-							<Badge badgeContent={cartItems?.length} color="secondary">
+							<Badge
+								badgeContent={cartItems?.length}
+								color="secondary"
+							>
 								<ShoppingCart />
 							</Badge>
 							Your Cart
@@ -188,54 +202,75 @@ const Sidebar = (props) => {
 								)}
 							</b>
 						</div>
-						<button className="checkout-btn" onClick={handleCheckout}>Checkout</button>
-						<button type="button" className="clear-btn" onClick={handleClearCart}>Clear Cart</button>
+						<button
+							className="checkout-btn"
+							onClick={handleCheckout}
+						>
+							Checkout
+						</button>
+						<button
+							type="button"
+							className="clear-btn"
+							onClick={handleClearCart}
+						>
+							Clear Cart
+						</button>
 					</div>
 				</div>
 			) : null}
 
-
 			{/* Show checkout modal*/}
 
-			{showCheckout? 
-			<div className="checkout-container">
-				<div className="checkout-blur" onClick={handleshowCheckout}></div>
+			{showCheckout ? (
+				<div className="checkout-container">
+					<div
+						className="checkout-blur"
+						onClick={handleshowCheckout}
+					></div>
 
-				<div className="checkout-modal">
-					<div className="checkout-modal-header">
-						<div className="checkout-modal-header-first">
-							Item
+					<div className="checkout-modal">
+						<div className="checkout-modal-header">
+							<div className="checkout-modal-header-first">
+								Item
+							</div>
+							<div>Qty</div>
+							<div>Status</div>
 						</div>
-						<div>Qty</div>
-						<div>Price</div>
-						<div>Status</div>
+
+						{checkoutItems.length === 0 ? (
+							<div>
+								<h2 style={{ textAlign: "center" }}>
+									No orders
+								</h2>
+							</div>
+						) : (
+							<div>
+								{" "}
+								{checkoutItems?.map((item) => {
+									return (
+										<div>
+											<h3>Batch</h3>
+											{item.map((item) => {
+												return (
+													<div className="checkout-item">
+														<div className="checkout-item-name">
+															{item.name}
+														</div>
+														<div>{item.amount}</div>
+														<h4 className="checkout-status">
+															Cooking
+														</h4>
+													</div>
+												);
+											})}
+										</div>
+									);
+								})}
+							</div>
+						)}
 					</div>
-
-					{checkoutItems?.map((item) => {
-						return (
-						<div>
-							<h3>Batch</h3>
-							{item.map((item) => {
-								return (
-									<div className="checkout-item">
-									<div className="checkout-item-name">
-										{item.name}
-									</div>
-									<div>{item.amount}</div>
-									<h4>{item.price}</h4>
-									<h4 className="checkout-status">Cooking</h4>
-								</div>
-								)
-							})}
-
-						</div>						);
-					})}
-
 				</div>
-
-			</div>
-			: null}
-
+			) : null}
 
 			<div className={isNavOpen ? "hamburger active" : "hamburger"}>
 				<span className="bar side"></span>
