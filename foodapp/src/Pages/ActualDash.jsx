@@ -9,22 +9,22 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ActualDash = () => {
   const cartLength = cartStore.length
-  let ignore = false;
+  let notify = false;
 
   useEffect(() => {
 
-    if (!ignore) {
-    toast.success("Welcome to Lillies")
+    if (!notify) {
+    toast.success("Welcome to Lillies", {autoClose: 3000})
   }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  return () => {ignore = true}
+  return () => {notify = true}
   }, [])    
 
 
 
   return (
     <div className="ActualDash">
-        <ToastContainer/>
+        <ToastContainer autoClose={3000}/>
         <Sidebar cartLength={cartLength}/>
         <Dashboard />
         <ModalComp/>
