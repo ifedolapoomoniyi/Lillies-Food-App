@@ -35,10 +35,13 @@
     border-radius: 5px;
 }
 .sidebar-flexer{
+    padding-left: 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
 
 }
 
@@ -60,7 +63,6 @@
     background: rgba(0,0,0,0.5);
     transition: all 0.5s ease;
     color: rgba(0, 48, 46, 1);
-    
 }
 
 .cart-blur{
@@ -107,7 +109,7 @@
 }
 
 .checkout-btn{
-    background: rgba(0, 48, 46, 1);
+    background: var(--primary-color);
     color: white;
     padding: 0.5rem 1rem;
     width: 100%;
@@ -216,6 +218,10 @@
     }
 
     .cart-main-container {
+        min-width: 250px;
+    }
+    
+    .checkout-modal {
         min-width: 250px;
     }
 }
