@@ -3,8 +3,9 @@ import Homepage from "./Pages/Homepage";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-import Sidebar from "./components/Sidebar";
 import ActualDash from "./Pages/ActualDash";
+import Profile from "./Pages/Profile";
+
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<ActualDash/>} />
+        <Route path="/profile"  element={<Profile/>} />
       </Routes>
     </BrowserRouter>
   );
