@@ -27,7 +27,7 @@ export const Food = [
     },
 
     {
-        name: "Daiiy special",
+        name: "Daily special",
         description: "The day's special meal, in a delicious package",
         price: 4000,
         img: "img1",
