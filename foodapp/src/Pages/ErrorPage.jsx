@@ -35,7 +35,7 @@ const ErrorPage = () => {
   return (
     <ErrorContainer>
         <Navbar/>
-        <ErrorHeader>404</ErrorHeader>
+        <ErrorHeader>Errorgit  404</ErrorHeader>
         <ErrorBody>
             No burgers here dear traveller 😪
         </ErrorBody>
