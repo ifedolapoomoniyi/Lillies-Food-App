@@ -5,6 +5,7 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import ActualDash from "./Pages/ActualDash";
 import Profile from "./Pages/Profile";
+import ErrorPage from "./Pages/ErrorPage";
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<ActualDash/>} />
         <Route path="/profile"  element={<Profile/>} />
+
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
     </BrowserRouter>
   );
