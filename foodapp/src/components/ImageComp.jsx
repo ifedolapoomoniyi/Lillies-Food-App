@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cartSlice"
 
+
+// Cart store was used to store cart in local storage but now redundant and feature now uses redux
 export const cartStore = []
 
 const storeToLocalStorage = () => {
@@ -33,7 +35,7 @@ const ImageComp = (props) => {
 	const handleCartStore = ()=>{
 		cartStore.push(obj)
 		storeToLocalStorage()
-		toast.success("Added to Cart")
+		toast.success("Added to Cart", {autoClose: 2000})
 		handleAddToCart()
 	}
 
@@ -56,8 +58,7 @@ const ImageComp = (props) => {
 
 	return (
 		<div className="ImageComp">
-			<ToastContainer/>
-			<img src={props.image} alt="" />
+			<img src={props.image} alt="" onClick={handleOpen} />
 			<h3 style={{ color: head }}>{props.name}</h3>
 			<p style={{ color: body }}>{props.text}</p>
 			<div className="price-and-cart">
@@ -76,7 +77,7 @@ const ImageComp = (props) => {
 			</div>
 			{props.children}
 
-			{/* Modal section */}
+			{/* Modal for Items */}
 
 			{openModal ? (
 				<div className="modalflexer">
@@ -103,7 +104,7 @@ const ImageComp = (props) => {
 			) : (
 				<></>
 			)}
-			
+			<ToastContainer autoClose={3000}/>
 		</div>
 	);
 };

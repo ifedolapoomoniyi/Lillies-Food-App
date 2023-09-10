@@ -28,12 +28,12 @@ const Footer = () => {
         </div>
         <div className="row4">
           <div className="footer-header">Install App</div>
-          <a>
+          <div>
             <img className="OnPlay" src={OnPlay} alt="Play store" />
-          </a>
-          <a >
+          </div>
+          <div>
             <img className="Appstore" src={AppStore} alt="App Store" />
-          </a>
+          </div>
         </div>
       </div>
       <hr />

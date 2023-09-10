@@ -36,6 +36,7 @@ const Sidebar = (props) => {
 
 	function handleClearCart() {
 		dispatch(clearCart());
+		localStorage.removeItem("cart")
 		if (cartItems.length === 0) {
 			toast.warning("Cart is already empty", { autoClose: 2000 });
 			return;
@@ -239,17 +240,17 @@ const Sidebar = (props) => {
 
 						{checkoutItems.length === 0 ? (
 							<div>
-								<h2 style={{ textAlign: "center" }}>
+								<h2 style={{ textAlign: "center"}}>
 									No orders
 								</h2>
 							</div>
 						) : (
 							<div>
 								{" "}
-								{checkoutItems?.map((item) => {
+								{checkoutItems?.map((item, index) => {
 									return (
 										<div>
-											<h3>Batch</h3>
+											<h3 style={{margin: "10px 0", paddding: 0}}>Batch {index + 1}</h3>
 											{item.map((item) => {
 												return (
 													<div className="checkout-item">
