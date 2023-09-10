@@ -12,6 +12,8 @@ test("renders component correctly", () => {
     </Provider>
     )
     expect(view).toMatchSnapshot();
+    const testMessage = 'Good morning';
+    expect(screen.getByText(testMessage)).toBeInTheDocument();
 })
 
 test("renders text correctly", () => {
@@ -20,11 +22,5 @@ test("renders text correctly", () => {
         <Dashboard/>
     </Provider>
     )
-    const testMessage = 'Good morning';
-    expect(screen.getByText(testMessage)).toBeInTheDocument();
-})
 
-// test("renders text correctly", () => {
-//     expect(screen.getByText("Good morning")).toBeInTheDocument();
-//     expect(screen.getByText("delicious meal")).toBeInTheDocument();
-// })
+})
