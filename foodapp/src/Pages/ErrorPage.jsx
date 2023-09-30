@@ -31,11 +31,11 @@ const ErrorBtn = styled.button`
     font-family: cursive;
 `
 
-const ErrorPage = () => {
+const ErrorPage = () => {   
   return (
     <ErrorContainer>
         <Navbar/>
-        <ErrorHeader>Errorgit  404</ErrorHeader>
+        <ErrorHeader>Error 404</ErrorHeader>
         <ErrorBody>
             No burgers here dear traveller 😪
         </ErrorBody>
