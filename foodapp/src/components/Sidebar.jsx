@@ -15,6 +15,7 @@ import { clearCart } from "../redux/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { checkout } from "../redux/checkoutSlice";
+import { logOut } from "../redux/LoggedIn";
 
 const Sidebar = (props) => {
 	const dispatch = useDispatch();
@@ -30,13 +31,16 @@ const Sidebar = (props) => {
 	const handleshowCheckout = () => {
 		setShowCheckout(!showCheckout);
 	};
-	const cartItems = useSelector((state) => state.theme.items);
+	const handleLogout = () => {
+		dispatch(logOut());
+	};
+	const cartItems = useSelector((state) => state.cart.items);
 	const checkoutItems = useSelector((state) => state.checkout.cart);
 	const redirect = useNavigate();
 
 	function handleClearCart() {
 		dispatch(clearCart());
-		localStorage.removeItem("cart")
+		localStorage.removeItem("cart");
 		if (cartItems.length === 0) {
 			toast.warning("Cart is already empty", { autoClose: 2000 });
 			return;
@@ -69,7 +73,7 @@ const Sidebar = (props) => {
 		<>
 			<ToastContainer autoClose={3000} />
 			<div className={isNavOpen ? "Sidebar active" : "Sidebar"}>
-				<div className="sidebar-logo">
+				<Link to={"/"} className="sidebar-logo">
 					<img
 						src={logo}
 						alt=""
@@ -79,7 +83,7 @@ const Sidebar = (props) => {
 						style={{ cursor: "pointer" }}
 					/>
 					<span>Lilies</span>
-				</div>
+				</Link>
 				<div className="sidebar-flexer">
 					<div className="dashboard-link" onClick={handleNavOpen}>
 						<Link
@@ -156,6 +160,7 @@ const Sidebar = (props) => {
 						<Link
 							className="sidebar-links"
 							to={"/"}
+							onClick={handleLogout}
 							style={{
 								display: "flex",
 								alignItems: "center",
@@ -240,7 +245,7 @@ const Sidebar = (props) => {
 
 						{checkoutItems.length === 0 ? (
 							<div>
-								<h2 style={{ textAlign: "center"}}>
+								<h2 style={{ textAlign: "center" }}>
 									No orders
 								</h2>
 							</div>
@@ -250,7 +255,14 @@ const Sidebar = (props) => {
 								{checkoutItems?.map((item, index) => {
 									return (
 										<div>
-											<h3 style={{margin: "10px 0", paddding: 0}}>Batch {index + 1}</h3>
+											<h3
+												style={{
+													margin: "10px 0",
+													paddding: 0,
+												}}
+											>
+												Batch {index + 1}
+											</h3>
 											{item.map((item) => {
 												return (
 													<div className="checkout-item">
